@@ -15,6 +15,16 @@ If we want to build any app the two most important thing to think about is Data 
 For each different ways of creating object write different solutions.
 
 - Without Object
+```js
+let title = "";
+let options = [];
+let correctAnswerIndex = ;
+function isAnswerCorrect(index) {
+  index = option.index
+}
+
+
+```
 - Organize using object
 - Use a function to create object
 - Convert the function to use `this` keyword
