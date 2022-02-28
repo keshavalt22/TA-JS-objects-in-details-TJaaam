@@ -16,18 +16,77 @@ For each different ways of creating object write different solutions.
 
 - Without Object
 ```js
-let title = "";
-let options = [];
-let correctAnswerIndex = ;
+let title = 'Where is the capital of Jordan';
+let options = ['Tashkent', 'Amaan', 'Kuwait City', 'Nairobi'];
+let correctAnswerIndex = 1;
+
 function isAnswerCorrect(index) {
-  index = option.index
+    return index === correctAnswerIndex;
 }
 
+function getCorrectAnswer(){
+  return options[correctAnswerIndex];
+}
 
 ```
 - Organize using object
+
+```js
+
+let quiz = {
+  title : 'Where is the capital of Jordan',
+  options : ['Tashkent', 'Amaan', 'Kuwait City', 'Nairobi'],
+  correctAnswerIndex : 1,
+  isAnswerCorrect(index) {
+    return index === quiz.correctAnswerIndex;
+  },
+  getCorrectAnswer(){
+    return quiz.options[quiz.correctAnswerIndex];
+  }
+}
+
+```
 - Use a function to create object
+
+```js
+
+function operation(title, options, correctAnswerIndex){
+  let quiz = {};
+  quiz.title = title;
+  quiz.options = options;
+  quiz.correctAnswerIndex = correctAnswerIndex;
+
+  quiz.isAnswerCorrect = function(index) {
+    return index === quiz.correctAnswerIndex;
+  };
+  quiz.getCorrectAnswer = function() {
+    return quiz.options[quiz.correctAnswerIndex];
+  };
+  return quiz;
+}
+
+```
+
 - Convert the function to use `this` keyword
+
+```js
+function operation(title, options, correctAnswerIndex){
+  let quiz = {};
+  quiz.title = title;
+  quiz.options = options;
+  quiz.correctAnswerIndex = correctAnswerIndex;
+
+  quiz.isAnswerCorrect = function(index) {
+    return index === this.correctAnswerIndex;
+  };
+  quiz.getCorrectAnswer = function() {
+    return this.options[this.correctAnswerIndex];
+  };
+  return quiz;
+}
+
+```
+
 - Write test by creating two objects also test both methods.
 
 ### To test use the following data
