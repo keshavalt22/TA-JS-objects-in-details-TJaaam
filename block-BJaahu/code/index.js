@@ -1,28 +1,21 @@
-let title = 'Where is the capital of Jordan';
-let options = ['Tashkent', 'Amaan', 'Kuwait City', 'Nairobi'];
-let correctAnswerIndex = 1;
-
-
-function isAnswerCorrect(index) {
-    return index === correctAnswerIndex;
-}
-
-function getCorrectAnswer (){
-    return options[correctAnswerIndex];
-}
-
 // - Prototypal pattern of object creation
 
-let quiz = {
-    title : 'Where is the capital of Jordan',
-    options : ['Tashkent', 'Amaan', 'Kuwait City', 'Nairobi'],
-    correctAnswerIndex : 1,
-    isAnswerCorrect(index) {
-      return index === quiz.correctAnswerIndex;
-    },
-    getCorrectAnswer(){
-      return quiz.options[quiz.correctAnswerIndex];
-    }
+let questionMethod = {
+  isAnswerCorrect : function (index) {
+    return index === correctAnswerIndex;
+  },
+  getCorrectAnswer : function  (){
+    return options[correctAnswerIndex];
+  }
+}
+
+function quiz (title, options, correctAnswerIndex) {
+    let question = Object.create(questionMethod)
+    question.title = title;
+    question.options = options;
+    question.correctAnswerIndex = correctAnswerIndex;
+
+    return question;
   }
 
 // Pseudoclassical Pattern (Put methods inside F.prototype and use `new` to call function)
