@@ -12,11 +12,11 @@ function createUser (name, id, noOfProjects){
   user.id = id;
   user.noOfProjects = noOfProjects;
 
-  user.getProjects = function(noOfProjects) {
-    return noOfProjects;
+  user.getProjects = function() {
+    return this.noOfProjects;
   },
-  user.changeName = function(name) {
-    this.name = name;
+  user.changeName = function(newName) {
+    this.name = newName;
     return this.name;
   },
   user.incrementProject = function(value = 1) {
@@ -34,20 +34,12 @@ function createUser (name, id, noOfProjects){
 - [ ] Using Object.create (prototypal pattern)
 
 ```js
-function createUser (name, id, noOfProjects){
-  let user = Object.create(createUser.prototype);
-  user.name = name;
-  user.id = id;
-  user.noOfProjects = noOfProjects;
-  return user;
-}
-
-createUser.prototype = {
-  getProjects : function(noOfProjects) {
-    return noOfProjects;
+let userMethod = {
+  getProjects : function() {
+    return this.noOfProjects;
   },
-  changeName : function(name) {
-    this.name = name;
+  changeName : function(newName) {
+    this.name = newName;
     return this.name;
   },
   incrementProject : function(value = 1) {
@@ -58,6 +50,14 @@ createUser.prototype = {
     this.noOfProjects = noOfProjects - value;
     return this.noOfProjects;
   }
+}
+
+function createUser (name, id, noOfProjects){
+  let user = Object.create(userMethod);
+  user.name = name;
+  user.id = id;
+  user.noOfProjects = noOfProjects;
+  return user;
 }
 ```
 - [ ] Using Pseudoclassical Way
@@ -70,11 +70,11 @@ function CreateUser (name, id, noOfProjects){
 }
 
 CreateUser.prototype = {
-  getProjects : function(noOfProjects) {
-    return noOfProjects;
+  getProjects : function() {
+    return this.noOfProjects;
   },
-  changeName : function(name) {
-    this.name = name;
+  changeName : function(newName) {
+    this.name = newName;
     return this.name;
   },
   incrementProject : function(value = 1) {
@@ -98,11 +98,11 @@ class CreateUser{
     this.id = id;
     this.noOfProjects = noOfProjects;
   }
-  getProjects (noOfProjects) {
-    return noOfProjects;
+  getProjects () {
+    return this.noOfProjects;
   }
-  changeName(name) {
-    this.name = name;
+  changeName(newName) {
+    this.name = newName;
     return this.name;
   }
   incrementProject(value = 1) {
