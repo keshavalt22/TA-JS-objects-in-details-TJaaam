@@ -2,8 +2,8 @@
 
 // function createUser(name, age){
 //     let user = {};
-//     obj.name = name;
-//     obj.age = age;
+//     user.name = name;
+//     user.age = age;
 //     return user;
 // }
 
@@ -12,11 +12,11 @@
 
 function createUser(name, age){
     let user = {};
-    obj.name = name;
-    obj.age = age;
+    user.name = name;
+    user.age = age;
 
-    obj.sayHello = function(){
-        alert(`Welcome ${obj.name}`);
+    user.sayHello = function(){
+        alert(`Welcome ${user.name}`);
     }
     return user;
 }
@@ -45,17 +45,17 @@ function createUser(name, age){
 
 // 5. Convert the `createUser` function into Pseudoclassical pattern of object creation. Use `F.prototype` to store the methods. `F.prototype` means storing the methods in prototype property of the function.
 
-CreateUser.prototype = {
-    sayHello : function() {
-        alert(`Welcome ${this.name}`);
-    }
-}
 
 function CreateUser(name, age) {
     this.name = name;
     this.age = age;
 }
 
+CreateUser.prototype = {
+    sayHello : function() {
+        alert(`Welcome ${this.name}`);
+    }
+}
 
 // 6. Use `new` to create two new objects with the data of two different person and re-assign the value of `personOne` and `personTwo`.
 
