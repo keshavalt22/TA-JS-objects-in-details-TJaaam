@@ -1,13 +1,13 @@
 let animalMethods = {
     eat : function() {
-        return console.log(` live in ${this.location} and I can eat`);
+        console.log(` live in ${this.location} and I can eat`);
     },
     changeLocation : function(newLocation) {
         this.location = newLocation;
         return this.location;
     },
     summary : function() {
-        return `I live in ${this.location} and I have ${this.numberOfLegs} legs.`;
+        console.log(`I live in ${this.location} and I have ${this.numberOfLegs} legs.`);
     }
     
 }
@@ -25,7 +25,7 @@ let dogMethods = {
         this.color = newColor;
         return this.color;
     },
-    summaryDog : function() {
+    summary : function() {
         return `I am ${this.name} and I am of ${this.color} color. I can also bark`;
     }
 }
@@ -39,10 +39,10 @@ let catMethods = {
         return this.name;
     },
     changeColorOfEyes : function(newColor) {
-        this.color = newColor;
-        return this.color;
+        this.colorOfEyes = newColor;
+        return this.colorOfEyes;
     },
-    summaryCat : function() {
+    summary : function() {
         return `I am ${this.name} and the color of my eyes are ${this.colorOfEyes}. I can also do meow meow`;
     }
 }
