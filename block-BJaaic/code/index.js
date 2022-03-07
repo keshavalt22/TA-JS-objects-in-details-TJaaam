@@ -1,5 +1,5 @@
 let animalMethods = {
-    eat : function(location) {
+    eat : function() {
         return console.log(` live in ${this.location} and I can eat`);
     },
     changeLocation : function(newLocation) {
