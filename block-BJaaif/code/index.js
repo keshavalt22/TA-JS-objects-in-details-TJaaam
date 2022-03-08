@@ -75,7 +75,7 @@ simon.greet(); // -> Logs 'hello'
 /*** CHALLENGE 2 of 3 ***/
 
 // function personFromConstructor(name, age) {
-//   let obj = new PersonFromConstructor();
+//   let obj = new personStore();
 //   obj.name = name;
 //   obj.age = age;
 //   return obj;
