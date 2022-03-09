@@ -15,7 +15,6 @@ Data:
 - `stack`
 
 Methods:
-
 - `push`: will accept a value and add to the stack. Stack adds data at the end
 - `pop`: will delete the last element (max index) of the stack
 - `peek`: can accept and optional parameter. Will display the element at the given index(passed as argument). If nothing is passed display the last element (last index)
