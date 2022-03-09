@@ -5,6 +5,7 @@
 
 // myMap function goes here
 
+
 // Test the myMap function you created above
 
 let numbers = [1, 5, 6, 8, 9];
