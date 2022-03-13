@@ -8,19 +8,33 @@
     <link rel="stylesheet" href="../assets/stylesheet/style.css">
 </head>
 <body>
-    <h1>My Book List</h1>
-    <div class="container">
-        <input type="text">
-        <ul class="books"></ul>
-    </div>
-    <div class="container">
-        <input type="text">
-        <ul class="auhtor"></ul>
-    </div>
-    <div class="container">
-        <input type="text">
-        <ul class="url"></ul>
-    </div>
+    <form action="" class="form">
+        <input 
+        type="text" 
+        name="bookName"
+        class="form__input"
+        placeholder="Name of the book!">
+
+        <input 
+        type="text" 
+        class="form__input"
+        name="bookAuthor"
+        placeholder="Author of the book"
+        >
+
+        <input 
+        type="text"
+        name="bookImage"
+        class="form__input"
+        placeholder="Book poster image URL"
+        >
+
+        <button class="form__button" type="submit"></button>
+    </form>
+<div class="books">
+    <ul class="book__list">
+    </ul>
+</div>
     <script src="../code/script.js"></script>
 </body>
 </html>

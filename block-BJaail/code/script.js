@@ -1,64 +1,74 @@
-class BookList {
-    constructor(root, list = []){
-        this.books = list;
-        this.root = root;
-    }
-    add(text){
-        let book = new Book(text);
-        this.books.push(book);
-        this.createUI();
-        return this.books.length;
-    }
-    handleDelete(id){
-        let index = this.books.findIndex((book) => book.id === id);
-        this.books.splice(index, 1);
-        this.createUI();
-        return this.books.length;
-    }
-    createUI(){
-        this.root.innerHTML = "";
-        this.books.forEach((book) => {
-            let ui = book.createUI();
-            ui.querySelector("span").addEventListener(
-                "click", 
-                this.handleDelete.bind(this, book.id)
-                );
-            this.root.append(ui);
-        });
-    }
-}
+let form = document.querySelector(`form`);
+let bookListRoot = document.querySelector(`.book__list`);
+
+const nameElm = form.elements.bookName;
+const authorElm = form.elements.bookAuthor;
+const imageElm = form.elements.bookImage;
+
 
 class Book {
-    constructor(text){
-        this.text = text;
-        this.isDone = false;
-        this.id = `id - ${Date.now()}`;
+    constructor(name, author, img){
+        this.name = name;
+        this.author = author;
+        this.img = img;
+        this.isRead = false;
     }
-    handleCheck(){
-        this.isDone = !this.isDone;
-        this.createUI();
-    }
-    createUI(){
-        let li = document.createElement("li");
-        let input = document.createElement("input");
-        input.type = "checkbox";
-        input.checked = this.isDone;
-        input.addEventListener("click", this.handleCheck.bind(this));
-        let p = document.createElement("p");
-        p.innerText = this.text;
-        let span = document.createElement("span");
-        span.innerText = "X";
-        li.append(input, p, span);
-        return li;
+    toggleIsRead(){
+        this.isRead = !this.isRead;
     }
 }
 
-let input = document.querySelector("input");
-let myBooks = new BookList(document.querySelector(".books"));
 
-input.addEventListener ("keyup", (event) => {
-    if (event.keyCode === 13){
-        myBooks.add(event.target.value);
-        event.target.value = "";
+
+class BookList{
+    constructor(books = []){
+        this.books = books;
     }
-})
+    addBook(name, author, img){
+        let book = new Book(name, author, img);
+        this.books.push(book);
+        this.createUI();
+    }
+    createUI(){
+        bookListRoot.innerHTML = "";
+        this.books.forEach(book =>{
+            let li = document.createElement(`li`);
+            let img = document.createElement(`img`);
+            img.src = book.img;
+            let h2 = document.createElement(`h2`);
+            h2.innerText = book.name;
+            let p = document.createElement(`p`);
+            p.innerText = book.author;
+            let button = document.createElement(`button`);
+            button.classList.add(`form__button`);
+            button.innerText = book.isRead
+            ? `Completed!`
+            : `mark as read!`;
+            li.append(img, h2, p, button);
+            button.addEventListener(`click`, () => {
+                book.toggleIsRead();
+                this.createUI();
+            });
+            bookListRoot.append(li);
+        })
+    }
+}
+
+let library = new BookList();
+
+
+
+function handleSubmit (){
+    event.preventDefault();
+    const name = nameElm.value;
+    const author = authorElm.value;
+    const img = imageElm.value; 
+    library.addBook(name, author, img);
+    nameElm.value = ``;
+    authorElm.value = ``;
+    imageElm.value = ``;
+}
+
+form.addEventListener(`submit`, handleSubmit);
+
+
